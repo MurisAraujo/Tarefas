@@ -1,12 +1,19 @@
 import { createStore, combineReducers } from 'redux';
-import userAuthReducer from './userAuth/userAuthReducer';
-import taskStatesReducer from './taskStates/taskStatesReducer';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import userAuthReducer from './userAuth/userAuthReducer';
+import taskStatesReducer from './taskStates/taskStatesReducer';
+import stateUpdateReducer from './stateUpdate/stateUpdateReducer';
+import visionMenuReducer from './visionMenu/visionMenuReducer';
+import userPhotosReducer from './userPhotos/userPhotosReducer';
+
 const rootReducer = combineReducers({
   permissions: userAuthReducer,
-  taskStates: taskStatesReducer
+  taskStates: taskStatesReducer,
+  stateUpdate: stateUpdateReducer,
+  visionMenu: visionMenuReducer,
+  userPhotos: userPhotosReducer
 })
 
 const persistConfig = {

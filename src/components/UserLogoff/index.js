@@ -1,24 +1,41 @@
-import React from 'react';
-import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { Container } from './styles';
 import { logOff } from '../../redux';
 
 const UserLogoff = () => {
 
+  const [photo, setPhoto] = useState('');
+
   const dispatch = useDispatch();
   const history = useHistory();
+  const { userPhotos } = useSelector(state => state);
+  const { permissions } = useSelector(state => state);
+  
 
-  function exitGTPP(){
+  async function loadUserImage() {
+    for (let index = 0; index < userPhotos.length; index++) {
+      if(permissions.id === userPhotos[index].user_id){
+        setPhoto(userPhotos[index].photo)
+      }
+    }
+  }
+
+  function exitGTPP() {
     dispatch(logOff());
     history.push('/');
   }
 
+  useEffect(() => {
+    loadUserImage()
+  }, []);
+
   return (
     <Container>
-      <button onClick={() => {exitGTPP()}}>
-        M
+      <button onClick={() => { exitGTPP() }}>
+        <img src={"data:image/jpeg;base64," + photo} alt=""/>
       </button>
     </Container>
   );

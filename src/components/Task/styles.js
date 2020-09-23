@@ -41,6 +41,9 @@ export const TaskName = styled.div`
         visibility: visible;
       }
     }
+    img{
+      border-radius: 100%;
+    }
     .tooltiptext {
       visibility: hidden;
       width: 120px;

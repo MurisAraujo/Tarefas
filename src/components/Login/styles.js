@@ -25,6 +25,7 @@ export const FormSection = styled.div`
   width: 35%;
   height: 100%;
   justify-content: center;
+  position:relative;
   label{
     margin: 10px 0;
     color: #e9e9e9;
@@ -55,4 +56,24 @@ export const FormSection = styled.div`
     color: #e9e9e9;
     align-self: center;
   }
+  h2{
+    font-size: 36px;
+    color: #e9e9e9;
+    align-self: center;
+    position:absolute;
+    top:10%;
+  }
+  img{
+    position:absolute;
+    bottom:5%;
+    width:350px;
+    align-self:center;
+  }
 `;
+
+export const Divisor = styled.div`
+  width: .2%;
+  height:90%;
+  align-self:center;
+  background-color: #e9e9e9;
+`

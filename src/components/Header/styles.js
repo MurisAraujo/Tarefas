@@ -33,6 +33,7 @@ export const CreateArea = styled.div`
         input{
           height: 30px;
           margin-right: 5px;
+          padding: 0 10px;
         }
         button{
           width:70px;

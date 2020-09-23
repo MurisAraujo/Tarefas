@@ -1,9 +1,27 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from './styles';
+import {setCol, setOrder, setUpdate} from '../../redux';
 
 const VisionMenu = () => {
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const changeCol = (value) => {
+    if(value !== 'vazio'){
+      dispatch(setCol(value));
+      dispatch(setUpdate());
+    }
+  }
+
+  const changeOrder = (value) => {
+    if(value !== 'vazio'){
+      dispatch(setOrder(value));
+      dispatch(setUpdate());
+    }
+  }
 
   return (
     <Container show={show}>
@@ -43,10 +61,17 @@ const VisionMenu = () => {
             <h2 >Ordenar por:</h2>
           </li>
           <li >
-            <select name="order-select" id="order-select">
-              <option value="1">Prioridade</option>
-              <option value="2">Estado</option>
-              <option value="3">Data</option>
+            <select name="col-select" id="col-select" onChange={ e => changeCol(e.target.value)}>
+              <option value="vazio">Selecione uma opção</option>
+              <option value="priority">Prioridade</option>
+              <option value="state_id">Estado</option>
+            </select>
+          </li>
+          <li>
+            <select name="order-select" id="order-select" onChange={ e => changeOrder(e.target.value)}>
+              <option value="vazio">Selecione uma opção</option>
+              <option value="asc">Ascendente</option>
+              <option value="desc">Descendente</option>
             </select>
           </li>
         </ul>

@@ -4,13 +4,15 @@ import { useHistory } from 'react-router-dom';
 
 import { Container } from './styles';
 import Task from '../Task';
-import { loadTask, loadTaskStates } from './functions'
-import { getStates } from '../../redux';
+import { loadTask, loadTaskStates, loadUserImages } from './functions'
+import { getStates, setPhotos } from '../../redux';
 
 
 const TaskTable = () => {
 
   const { permissions } = useSelector(state => state);
+  const { stateUpdate } = useSelector(state => state);
+  const { visionMenu } = useSelector(state => state);
 
   // eslint-disable-next-line
   const history = useHistory();
@@ -19,7 +21,7 @@ const TaskTable = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    loadTask(permissions).then(response => {
+    loadTask(permissions, visionMenu).then(response => {
       if (response.error === true) {
         alert('teste')
       } else {
@@ -27,7 +29,7 @@ const TaskTable = () => {
       }
     });
     // eslint-disable-next-line
-  }, []);
+  }, [stateUpdate]);
 
   useEffect(() => {
     loadTaskStates(permissions).then(response => {
@@ -35,6 +37,17 @@ const TaskTable = () => {
         alert('teste')
       } else {
         dispatch(getStates(response.data))
+      }
+    });
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    loadUserImages(permissions).then(response => {
+      if (response.error === true) {
+        alert('teste')
+      } else {
+        dispatch(setPhotos(response.data))
       }
     });
     // eslint-disable-next-line

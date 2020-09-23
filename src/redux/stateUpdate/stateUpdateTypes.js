@@ -1,2 +1,1 @@
-const teste = 2 ;
-const teste2 = 23213213;
+export const UPDATEDONE = 'UPDATEDONE';
