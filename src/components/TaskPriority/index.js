@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Container, Options } from './styles'
-import { setUpdate } from '../../redux'
+import { updateTask } from '../../redux'
 
 import lowPriority from '../../assets/Path1.png';
 import medPriority from '../../assets/Path2.png';
@@ -28,7 +28,7 @@ const TaskPriority = ({ task }) => {
         "priority": id,
         "user_id": task.user_id,
       }).then(() => {
-        dispatch(setUpdate())
+        dispatch(updateTask())
         setShow(false);
       });
 

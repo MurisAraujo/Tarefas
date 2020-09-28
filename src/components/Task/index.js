@@ -1,21 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, TaskName } from './styles'
 import { useSelector } from 'react-redux';
 import TaskState from '../TaskState';
 import TaskPriority from '../TaskPriority';
 import TaskDate from '../TaskDate';
+import TaskUsers from '../TaskUsers';
 
 const Task = ({ task }) => {
 
   const [photo, setPhoto] = useState('');
 
   const { userPhotos } = useSelector(state => state);
+  const { visionMenu } = useSelector(state => state);
 
   async function loadUserImage() {
     for (let index = 0; index < userPhotos.length; index++) {
-      if(task.user_id === userPhotos[index].user_id){
+      if (task.user_id === userPhotos[index].user_id) {
         setPhoto(userPhotos[index].photo)
+      } else {
       }
     }
   }
@@ -25,22 +28,24 @@ const Task = ({ task }) => {
   }, []);
 
   setTimeout(() => {
-    
+
   }, 200);
 
   return (
-    <Container>
+    <Container className="task">
       <TaskName>
         <div className="tooltip" >
-          <img src={"data:image/jpeg;base64," + photo} alt="" width='30' height='30' />
+          <img src={photo} alt="" width='30' height='30' />
           <span className="tooltiptext">{task.user_name}</span>
         </div>
         <h2 >{task.description}</h2>
       </TaskName>
       <div className="taskContent">
-        <TaskPriority task={task} />
-        <TaskState task={task} />
-        <TaskDate task={task} />
+        
+        {visionMenu.vinc === true ? <TaskUsers task={task} /> : null}
+        {visionMenu.priority === true ? <TaskPriority task={task} /> : null}
+        {visionMenu.state === true ? <TaskState task={task} /> : null}
+        {visionMenu.date === true ? <TaskDate task={task} /> : null}
         <h2>{task.progress}%</h2>
       </div>
     </Container>

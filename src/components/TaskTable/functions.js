@@ -27,7 +27,7 @@ export const loadUserImages = async params => {
   const AUTH = params.session
 
   try {
-    const { data } = await api.get('http://187.35.128.157:71/GLOBAL/Controller/EmployeePhoto.php', {params: {"AUTH": AUTH, "all": 1}})
+    const { data } = await api.get('http://192.168.0.99:71/GLOBAL/Controller/EmployeePhoto.php', {params: {"AUTH": AUTH, "all": 1}})
     return data;
   } catch (error) {
     console.log(error)

@@ -15,7 +15,7 @@ const Login = () => {
 
   const UserLogin = async () => {
     try {
-      const {data} = await api.post('http://187.35.128.157:71/GLOBAL/Controller/Login.php?login', {
+      const {data} = await api.post('http://192.168.0.99:71/GLOBAL/Controller/Login.php?login', {
         "user": document.getElementById('user_name').value,
         "password": document.getElementById('password').value
       })

@@ -1,7 +1,7 @@
-import { UPDATEDONE } from './stateUpdateTypes';
+import { UPDATETASK } from './stateUpdateTypes';
 
-export const setUpdate = () => {
+export const updateTask = () => {
   return{
-    type: UPDATEDONE
+    type: UPDATETASK
   }
 }

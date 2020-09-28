@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, AddDate } from './styles';
-import { setUpdate } from '../../redux';
+import { updateTask } from '../../redux';
 import api from '../../services/api';
 
 
@@ -23,7 +23,7 @@ const TaskDate = ({ task }) => {
           "task_id": task.id,
           "days": parseInt(input)
         }).then(() => {
-         dispatch(setUpdate())
+         dispatch(updateTask())
          setShow(false);
          input.value = null
         })
@@ -52,7 +52,7 @@ const TaskDate = ({ task }) => {
 
   return (
     <Container>
-      <div onClick={() => setShow(!show)}>
+      <div onClick={() => setShow(!show)} className="dataShow">
         <h2>
           {final_date} 
         </h2>

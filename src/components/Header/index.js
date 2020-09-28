@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Container, FilterDiv, CreateArea } from './styles';
-import {setUpdate} from '../../redux';
+import { updateTask } from '../../redux';
 
 import VisionMenu from '../VisionMenu';
 import Filter from '../Filter';
@@ -27,7 +27,7 @@ const Header = () => {
         alert('tarefa criada com sucesso');
         setCreateTaskOption(!createTaskOption);
         input.value = '';
-        dispatch(setUpdate())
+        dispatch(updateTask())
       })
     } catch (error) {
       alert(error)

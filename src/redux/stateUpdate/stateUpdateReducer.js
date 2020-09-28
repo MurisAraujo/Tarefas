@@ -1,11 +1,13 @@
-import {UPDATEDONE} from './stateUpdateTypes';
+import { UPDATETASK } from './stateUpdateTypes';
 
 const initialState = false;
 
+
+
 const stateUpdateReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATEDONE:
-      return !state
+    case UPDATETASK:
+      return !state 
     default:
       return state
   }

@@ -17,7 +17,7 @@ export const Container = styled.ul`
     background:#2693FF;
   }
 
-  li:nth-child(odd){
+  .task:nth-child(odd){
     background-color: #444444;
   }
 `;

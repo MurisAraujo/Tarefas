@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Container, Menu, StateItem } from './styles';
 import api from '../../services/api';
-import {setUpdate} from '../../redux'
+import { updateTask } from '../../redux'
 
 const TaskState = ({ task }) => {
 
@@ -23,7 +23,7 @@ const TaskState = ({ task }) => {
         "priority": task.priority,
         "user_id": task.user_id,
       }).then(() => {
-        dispatch(setUpdate())
+        dispatch(updateTask())
         setShow(false);
       });
 

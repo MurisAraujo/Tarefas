@@ -1,1 +1,1 @@
-export const UPDATEDONE = 'UPDATEDONE';
+export const UPDATETASK = 'UPDATETASK';

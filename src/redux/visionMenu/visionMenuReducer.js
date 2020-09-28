@@ -1,8 +1,15 @@
-import { SET_ORDER, SET_COL } from './visionMenuTypes'
+import { SET_ORDER, SET_COL, SET_DATE_VISIBLE, SET_PRIORITY_VISIBLE, SET_STATE_VISIBLE, SET_VINC_VISIBLE } from './visionMenuTypes'
 
 const initialState = {
   col: 'priority',
-  order: 'desc'
+  order: 'desc',
+  company: '',
+  shop: '',
+  dept: '',
+  priority: true,
+  state: true,
+  date: true,
+  vinc: true
 }
 
 const visionMenuReducer = (state = initialState, action) => {
@@ -17,7 +24,27 @@ const visionMenuReducer = (state = initialState, action) => {
       return {
         ...state,
         col: action.payload
-      } 
+      }
+    case SET_DATE_VISIBLE:
+      return {
+        ...state,
+        date: action.payload
+      }
+    case SET_PRIORITY_VISIBLE:
+      return{
+        ...state,
+        priority: action.payload
+      }
+    case SET_STATE_VISIBLE:
+      return{
+        ...state,
+        state: action.payload
+      }
+    case SET_VINC_VISIBLE:
+      return{
+        ...state,
+        vinc: action.payload
+      }
     default:
       return state
   }

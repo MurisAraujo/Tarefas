@@ -13,7 +13,9 @@ export const Container = styled.button`
   h2{
     font-weight: 500;
   }
-  
+  @media(max-width: 900px){
+    display:none;
+  }
 `;
 
 export const Menu = styled.div`

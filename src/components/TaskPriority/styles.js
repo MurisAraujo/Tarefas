@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: inline-block;
   border-radius: 6px;
   position:relative;
+  margin-right: 5px;
   div{
     cursor:pointer;
     width:100%;

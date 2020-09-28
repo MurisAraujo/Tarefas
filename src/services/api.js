@@ -4,7 +4,7 @@ axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 const api = axios.create({
-    baseURL: 'http://187.35.128.157:71/GLOBAL/Controller/GTPP/',
+    baseURL: 'http://192.168.0.99:71/GLOBAL/Controller/GTPP/',
     method: 'POST',
     contentType: 'application/json',
     headers: {

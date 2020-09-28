@@ -2,25 +2,42 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from './styles';
-import {setCol, setOrder, setUpdate} from '../../redux';
+import {setCol, setOrder, updateTask, setStateVisi, setDateVisi, setVincVisi, setPriorityVisi } from '../../redux';
 
 const VisionMenu = () => {
   const [show, setShow] = useState(false);
 
+  const { visionMenu } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const changeCol = (value) => {
     if(value !== 'vazio'){
       dispatch(setCol(value));
-      dispatch(setUpdate());
+      dispatch(updateTask());
     }
   }
 
   const changeOrder = (value) => {
     if(value !== 'vazio'){
       dispatch(setOrder(value));
-      dispatch(setUpdate());
+      dispatch(updateTask());
     }
+  }
+
+  const setStateVisibility = (value) => {
+    dispatch(setStateVisi(value))
+  }
+
+  const setDateVisibility = (value) => {
+    dispatch(setDateVisi(value))
+  }
+
+  const setVincVisibility = (value) => {
+    dispatch(setVincVisi(value))
+  }
+
+  const setPriorityVisibility = (value) => {
+    dispatch(setPriorityVisi(value))
   }
 
   return (
@@ -46,16 +63,20 @@ const VisionMenu = () => {
             <label htmlFor="departament-cbox">Departamento</label>
           </li>
           <li >
-            <input type="checkbox" name="priority-cbox" id="priority-cbox" />
+            <input type="checkbox" name="priority-cbox" id="priority-cbox" onChange={e => setPriorityVisibility(e.target.checked)} checked={visionMenu.priority} />
             <label htmlFor="priority-cbox">Prioridade</label>
           </li>
           <li >
-            <input type="checkbox" name="state-cbox" id="state-cbox" />
+            <input type="checkbox" name="state-cbox" id="state-cbox" onChange={e => setStateVisibility(e.target.checked)} checked={visionMenu.state} />
             <label htmlFor="state-cbox">Estado</label>
           </li>
           <li >
-            <input type="checkbox" name="date-cbox" id="date-cbox" />
+            <input type="checkbox" name="date-cbox" id="date-cbox" onChange={e => setDateVisibility(e.target.checked)} checked={visionMenu.date} />
             <label htmlFor="date-cbox">Data</label>
+          </li>
+          <li >
+            <input type="checkbox" name="vinc-cbox" id="vinc-cbox" onChange={e => setVincVisibility(e.target.checked)} checked={visionMenu.vinc} />
+            <label htmlFor="vinc-cbox">Usuarios Vinculados</label>
           </li>
           <li >
             <h2 >Ordenar por:</h2>

@@ -8,8 +8,12 @@ export const Container = styled.div`
   color: #000;
   display: inline-block;
   position:relative;
-  div{
+  .dataShow{
     cursor: pointer;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
   }
 `;
 

@@ -19,6 +19,7 @@ const UserLogoff = () => {
     for (let index = 0; index < userPhotos.length; index++) {
       if(permissions.id === userPhotos[index].user_id){
         setPhoto(userPhotos[index].photo)
+        console.log(userPhotos[index].photo)
       }
     }
   }
@@ -35,7 +36,7 @@ const UserLogoff = () => {
   return (
     <Container>
       <button onClick={() => { exitGTPP() }}>
-        <img src={"data:image/jpeg;base64," + photo} alt=""/>
+        <img src={ photo} alt=""/>
       </button>
     </Container>
   );
